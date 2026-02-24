@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunanda Thompson — IT Support Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f5f2ee;
+    --bg2:       #ede9e3;
+    --bg3:       #e4dfd7;
+    --surface:   #faf8f5;
+    --surface2:  #ffffff;
+    --border:    #d4cdc4;
+    --border2:   #bfb8ae;
+    --ink:       #1c1917;
+    --ink-mid:   #57534e;
+    --ink-dim:   #a8a29e;
+    --ink-faint: #d4cdc4;
+    --orange:    #ea580c;
+    --orange-lt: #fed7aa;
+    --orange-bg: #fff7ed;
+    --amber:     #d97706;
+    --green:     #16a34a;
+    --green-bg:  #f0fdf4;
+    --blue:      #2563eb;
+    --blue-bg:   #eff6ff;
+    --red:       #dc2626;
+    --mono:      'DM Mono', monospace;
+    --sans:      'Cabinet Grotesk', sans-serif;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  /* TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' fill='%23c4bdb4' opacity='0.3'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes tickIn {
+    from { transform: scale(0) rotate(-45deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+  @keyframes slideRight {
+    from { width: 0; }
+    to   { width: var(--w); }
+  }
+  @keyframes countUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up   { animation: fadeUp 0.6s ease both; }
+  .delay-1   { animation-delay: 0.1s; }
+  .delay-2   { animation-delay: 0.2s; }
+  .delay-3   { animation-delay: 0.3s; }
+  .delay-4   { animation-delay: 0.4s; }
+  .delay-5   { animation-delay: 0.5s; }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0; z-index: 100;
+    background: rgba(245,242,238,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--ink);
+    padding: 0 48px;
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+  }
+  .nav-logo {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: 1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span {
+    color: var(--orange);
+  }
+  .nav-links { display: flex; gap: 0; }
+  .nav-links a {
+    color: var(--ink-mid);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0 18px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid var(--border);
+    transition: all 0.15s;
+  }
+  .nav-links a:last-child { border-right: 1px solid var(--border); }
+  .nav-links a:hover { background: var(--orange); color: white; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 48px 70px;
+    border-bottom: 2px solid var(--ink);
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  /* Large background text */
+  .hero::after {
+    content: 'IT';
+    position: absolute;
+    right: -20px; top: -40px;
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: 420px;
+    line-height: 1;
+    color: var(--bg2);
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+  .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 60px;
+    align-items: end;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange);
+    color: white;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 5px 14px;
+    margin-bottom: 24px;
+    letter-spacing: 0.1em;
+  }
+  .hero h1 {
+    font-family: var(--sans);
+    font-weight: 900;
+    font-size: clamp(3.2rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  .hero h1 .line2 {
+    color: var(--orange);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-solid {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ink);
+    color: white;
+    padding: 13px 28px;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px solid var(--ink);
+    transition: all 0.15s;
+  }
+  .btn-solid:hover { background: var(--orange); border-color: var(--orange); }
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--ink);
+    padding: 13px 28px;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px solid var(--ink);
+    transition: all 0.15s;
+  }
+  .btn-outline:hover { background: var(--bg2); }
+
+  /* Stats card */
+  .hero-stats {
+    background: var(--surface2);
+    border: 2px solid var(--ink);
+    padding: 28px;
+  }
+  .stats-title {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--ink-dim);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
+  }
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--bg2);
+  }
+  .stat-row:last-child { border-bottom: none; }
+  .stat-label { font-size: 0.82rem; color: var(--ink-mid); font-weight: 500; }
+  .stat-val {
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--orange);
+  }
+
+  /* ── SECTION ── */
+  .section {
+    padding: 80px 48px;
+    position: relative;
+    z-index: 1;
+    border-bottom: 2px solid var(--ink);
+  }
+  .section:nth-child(even) { background: var(--bg2); }
+  .section-inner { max-width: 1280px; margin: 0 auto; }
+
+  .sec-kicker {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--orange);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .sec-heading {
+    font-family: var(--sans);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+    line-height: 1.1;
+  }
+  .sec-heading span { color: var(--orange); }
+
+  /* ── TICKET PROJECTS ── */
+  .ticket-list { display: flex; flex-direction: column; gap: 24px; }
+
+  .ticket {
+    background: var(--surface2);
+    border: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .ticket:hover {
+    box-shadow: 6px 6px 0 var(--ink);
+    transform: translate(-3px, -3px);
+  }
+  .ticket-num {
+    background: var(--ink);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    gap: 4px;
+    border-right: 2px solid var(--ink);
+    flex-shrink: 0;
+  }
+  .ticket-num .tnum { font-size: 1.1rem; font-weight: 500; }
+  .ticket-body { padding: 24px 28px; }
+  .ticket-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .t-category {
+    background: var(--orange-bg);
+    border: 1px solid var(--orange-lt);
+    color: var(--orange);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 2px 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .t-priority {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 2px 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .t-priority.high { background: #fef2f2; border: 1px solid #fecaca; color: var(--red); }
+  .t-priority.med  { background: #fffbeb; border: 1px solid #fde68a; color: var(--amber); }
+  .t-priority.low  { background: var(--green-bg); border: 1px solid #bbf7d0; color: var(--green); }
+
+  .ticket-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .ticket-desc {
+    font-size: 0.85rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 14px;
+    font-weight: 400;
+  }
+  .ticket-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .t-skill {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--ink-mid);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    letter-spacing: 0.04em;
+  }
+  .ticket-side {
+    padding: 24px 20px;
+    border-left: 2px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-width: 120px;
+    background: var(--bg);
+  }
+  .t-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .t-status-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    border: 2px solid;
+  }
+  .t-status-dot.resolved { background: var(--green-bg); border-color: var(--green); }
+  .t-status-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 500;
+    text-align: center;
+  }
+  .t-link {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--orange);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    transition: color 0.15s;
+    text-align: center;
+  }
+  .t-link:hover { color: var(--ink); }
+
+  /* Resolution steps */
+  .ticket-steps {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+  }
+  .t-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+  }
+  .t-step-num {
+    width: 18px; height: 18px;
+    background: var(--orange);
+    color: white;
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── SKILLS GRID ── */
+  .skills-bento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .skill-box {
+    background: var(--surface2);
+    border: 2px solid var(--ink);
+    padding: 24px;
+    transition: all 0.2s;
+  }
+  .skill-box:hover {
+    box-shadow: 5px 5px 0 var(--orange);
+    transform: translate(-2px, -2px);
+  }
+  .skill-box.wide { grid-column: span 2; }
+  .skill-box.tall { grid-row: span 2; }
+  .sb-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+  .sb-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .sb-desc {
+    font-size: 0.8rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .sb-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sb-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    padding: 3px 10px;
+    border: 1px solid var(--border2);
+    color: var(--ink-mid);
+    background: var(--bg);
+    letter-spacing: 0.04em;
+  }
+  .sb-tag.orange { background: var(--orange-bg); border-color: var(--orange-lt); color: var(--orange); }
+  .sb-tag.green  { background: var(--green-bg);  border-color: #bbf7d0;         color: var(--green);  }
+  .sb-tag.blue   { background: var(--blue-bg);   border-color: #bfdbfe;         color: var(--blue);   }
+
+  /* Proficiency bars */
+  .prof-bar { margin-bottom: 12px; }
+  .prof-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  .prof-label span:last-child { color: var(--orange); font-family: var(--mono); font-size: 0.7rem; }
+  .prof-track {
+    height: 6px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .prof-fill {
+    height: 100%;
+    background: var(--orange);
+    animation: slideRight 1.2s ease both;
+    animation-delay: 0.4s;
+  }
+
+  /* ── TROUBLESHOOTING PLAYBOOK ── */
+  .playbook-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .playbook-card {
+    background: var(--surface2);
+    border: 2px solid var(--ink);
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  .playbook-card:hover {
+    box-shadow: 5px 5px 0 var(--ink);
+    transform: translate(-2px, -2px);
+  }
+  .pb-header {
+    background: var(--ink);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pb-header .pb-icon { font-size: 1rem; }
+  .pb-header .pb-title { font-size: 0.88rem; font-weight: 800; letter-spacing: -0.01em; }
+  .pb-header .pb-type {
+    margin-left: auto;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+  }
+  .pb-steps { padding: 18px 20px; }
+  .pb-step {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+  .pb-step:last-child { margin-bottom: 0; }
+  .pb-step-n {
+    width: 22px; height: 22px;
+    background: var(--orange-bg);
+    border: 1px solid var(--orange-lt);
+    color: var(--orange);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .pb-step-text { font-size: 0.8rem; color: var(--ink-mid); line-height: 1.5; }
+  .pb-step-text strong { color: var(--ink); font-weight: 700; }
+  .pb-footer {
+    padding: 10px 20px;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--ink-dim);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── TOOLS ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .tool-card {
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    padding: 20px 16px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .tool-card:hover {
+    border-color: var(--ink);
+    box-shadow: 4px 4px 0 var(--orange);
+    transform: translate(-2px, -2px);
+  }
+  .tool-icon { font-size: 1.6rem; margin-bottom: 8px; }
+  .tool-name { font-size: 0.82rem; font-weight: 800; color: var(--ink); margin-bottom: 3px; }
+  .tool-cat  { font-family: var(--mono); font-size: 0.62rem; color: var(--ink-dim); letter-spacing: 0.06em; }
+
+  /* ── DOCS ── */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .doc-card {
+    background: var(--surface2);
+    border: 2px solid var(--ink);
+    padding: 24px;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .doc-card:hover {
+    box-shadow: 5px 5px 0 var(--orange);
+    transform: translate(-2px, -2px);
+  }
+  .doc-type {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 500;
+  }
+  .doc-title {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+  .doc-desc {
+    font-size: 0.8rem;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    flex: 1;
+  }
+  .doc-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .doc-tag {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    padding: 2px 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--ink-mid);
+  }
+  .doc-link {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--orange);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.15s;
+  }
+  .doc-link:hover { color: var(--ink); }
+
+  /* ── METRICS ── */
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 48px;
+  }
+  .metric-card {
+    background: var(--surface2);
+    border: 2px solid var(--ink);
+    padding: 24px 20px;
+    text-align: center;
+    animation: countUp 0.6s ease both;
+  }
+  .metric-num {
+    font-family: var(--sans);
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--orange);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-label {
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ── CERTS ── */
+  .certs-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .cert-strip {
+    background: var(--surface2);
+    border: 2px solid var(--ink);
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.2s;
+  }
+  .cert-strip:hover {
+    box-shadow: 4px 4px 0 var(--orange);
+    transform: translate(-2px, -2px);
+  }
+  .cert-mark {
+    width: 40px; height: 40px;
+    background: var(--orange);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .cert-info {}
+  .cert-name { font-size: 0.85rem; font-weight: 800; color: var(--ink); margin-bottom: 2px; }
+  .cert-issuer { font-size: 0.72rem; color: var(--ink-mid); }
+  .cert-year { font-family: var(--mono); font-size: 0.65rem; color: var(--orange); margin-top: 2px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: white;
+    padding: 60px 48px;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: start;
+  }
+  .footer-name {
+    font-family: var(--sans);
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .footer-name span { color: var(--orange); }
+  .footer-tagline { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
+  .footer-contact { display: flex; flex-direction: column; gap: 10px; }
+  .fc-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.15s;
+  }
+  .fc-item:hover { color: var(--orange); }
+  .fc-icon {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+  .footer-right {
+    text-align: right;
+  }
+  .footer-open {
+    background: var(--orange);
+    color: white;
+    display: inline-block;
+    padding: 14px 28px;
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: background 0.15s;
+  }
+  .footer-open:hover { background: #c2410c; }
+  .footer-roles { display: flex; flex-direction: column; gap: 6px; text-align: right; }
+  .footer-role {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.06em;
+  }
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 40px auto 0;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.25);
+  }
+  .footer-bottom span { color: var(--orange); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-stats { display: none; }
+    .skills-bento { grid-template-columns: repeat(2, 1fr); }
+    .skill-box.wide { grid-column: span 1; }
+    .tools-grid { grid-template-columns: repeat(3, 1fr); }
+    .docs-grid { grid-template-columns: repeat(2, 1fr); }
+    .certs-row { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .section { padding: 60px 24px; }
+    .hero { padding: 70px 24px 60px; }
+    .hero::after { display: none; }
+    .ticket { grid-template-columns: 60px 1fr; }
+    .ticket-side { display: none; }
+    .playbook-grid { grid-template-columns: 1fr; }
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .metrics-row { grid-template-columns: repeat(2, 1fr); }
+    .docs-grid { grid-template-columns: 1fr; }
+    .certs-row { grid-template-columns: 1fr; }
+    .skills-bento { grid-template-columns: 1fr; }
+    footer { padding: 48px 24px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .footer-right { text-align: left; }
+    .footer-roles { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Sunanda<span>.</span>Thompson</a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#playbook">Playbook</a>
+      <a href="#skills">Skills</a>
+      <a href="#tools">Tools</a>
+      <a href="#docs">Docs</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow fade-up delay-1">🖥️ IT Support · Technical Support · Help Desk Portfolio</div>
+      <h1 class="fade-up delay-2">
+        Fixing Problems.<br>
+        <span class="line2">Fast.</span>
+      </h1>
+      <p class="hero-sub fade-up delay-3">
+        IT professional with 7+ years of hands-on support experience across universities, remote e-commerce operations, and web infrastructure. I troubleshoot, automate, document, and resolve — from desktop issues to network configs to scripted deployments.
+      </p>
+      <div class="hero-ctas fade-up delay-4">
+        <a href="#projects" class="btn-solid">↓ View Projects</a>
+        <a href="https://mail.google.com/mail/?view=cm&to=sunanda.thompson@gmail.com" target="_blank" class="btn-outline">✉ Contact Me</a>
+      </div>
+    </div>
+
+    <div class="hero-stats fade-up delay-5">
+      <div class="stats-title">// career snapshot</div>
+      <div class="stat-row">
+        <span class="stat-label">Years of IT Experience</span>
+        <span class="stat-val">7+</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Users Supported (HU)</span>
+        <span class="stat-val">1,300+</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Setup Time Reduced</span>
+        <span class="stat-val">30%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Site Uptime Achieved</span>
+        <span class="stat-val">99.5%</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">OS Environments</span>
+        <span class="stat-val">5+</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Certifications Earned</span>
+        <span class="stat-val">5</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-kicker">By The Numbers</div>
+    <h2 class="sec-heading">Impact & <span>Results</span></h2>
+
+    <div class="metrics-row">
+      <div class="metric-card">
+        <div class="metric-num">1,300+</div>
+        <div class="metric-label">Students & Faculty Supported at Huntington University</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">30%</div>
+        <div class="metric-label">Reduction in Lab Setup Time via Batch Script Automation</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">99.5%</div>
+        <div class="metric-label">Site Uptime Maintained for Syychronic Sound LLC</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">4+</div>
+        <div class="metric-label">E-Commerce Platforms Managed Simultaneously</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS (as support tickets) -->
+<section class="section" id="projects" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="sec-kicker">Portfolio Projects</div>
+    <h2 class="sec-heading">Completed <span>Tickets</span></h2>
+
+    <div class="ticket-list">
+
+      <!-- TICKET 1 -->
+      <div class="ticket fade-up">
+        <div class="ticket-num">
+          <span style="font-size:0.6rem; opacity:0.6;">TICKET</span>
+          <span class="tnum">#001</span>
+          <span style="font-size:0.55rem; opacity:0.5; margin-top:4px;">CLOSED</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-meta">
+            <span class="t-category">Scripting &amp; Automation</span>
+            <span class="t-priority high">High Impact</span>
+          </div>
+          <div class="ticket-title">Batch Script — Lab Computer Mass Deployment System</div>
+          <div class="ticket-desc">
+            Developed and deployed a suite of Windows Batch scripts to automate software installations across university computer labs. Previously each workstation required manual setup; the scripts reduced lab configuration time by 30%, enabling full room deployments before semester start. Scripts handle silent installs, shared drive mappings, network printer configurations, and environment variable setup.
+          </div>
+          <div class="ticket-steps">
+            <div class="t-step"><span class="t-step-num">1</span><span>Audit all lab software requirements per room and department</span></div>
+            <div class="t-step"><span class="t-step-num">2</span><span>Write silent-install batch scripts with error logging</span></div>
+            <div class="t-step"><span class="t-step-num">3</span><span>Test on single machine, validate all app launches correctly</span></div>
+            <div class="t-step"><span class="t-step-num">4</span><span>Deploy via network share across all lab workstations</span></div>
+            <div class="t-step"><span class="t-step-num">5</span><span>Document process for future IT staff handoff</span></div>
+          </div>
+          <div class="ticket-skills" style="margin-top:14px;">
+            <span class="t-skill">Windows Batch</span>
+            <span class="t-skill">Silent Install</span>
+            <span class="t-skill">Network Drives</span>
+            <span class="t-skill">Printer Config</span>
+            <span class="t-skill">Lab Management</span>
+            <span class="t-skill">Documentation</span>
+          </div>
+        </div>
+        <div class="ticket-side">
+          <div class="t-status">
+            <div class="t-status-dot resolved">✓</div>
+            <div class="t-status-label">Resolved</div>
+          </div>
+          <a href="https://github.com/sunanda-thompson" class="t-link">View Repo →</a>
+        </div>
+      </div>
+
+      <!-- TICKET 2 -->
+      <div class="ticket fade-up delay-1">
+        <div class="ticket-num">
+          <span style="font-size:0.6rem; opacity:0.6;">TICKET</span>
+          <span class="tnum">#002</span>
+          <span style="font-size:0.55rem; opacity:0.5; margin-top:4px;">CLOSED</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-meta">
+            <span class="t-category">Web Infrastructure</span>
+            <span class="t-priority high">High Impact</span>
+          </div>
+          <div class="ticket-title">WordPress Site Build, SSL & DNS Infrastructure — Syychronic Sound LLC</div>
+          <div class="ticket-desc">
+            End-to-end deployment and ongoing maintenance of a business website for a sound services company. Configured DNS records (A, CNAME, MX, TXT) via GoDaddy, installed and renewed SSL certificates for HTTPS, set up professional email routing, and maintained 99.5% uptime over two years. Applied WordPress security hardening — plugin vetting, update management, backup automation, and login protection.
+          </div>
+          <div class="ticket-steps">
+            <div class="t-step"><span class="t-step-num">1</span><span>Register domain, configure hosting & DNS at GoDaddy</span></div>
+            <div class="t-step"><span class="t-step-num">2</span><span>Install WordPress, select & customize theme</span></div>
+            <div class="t-step"><span class="t-step-num">3</span><span>Configure SSL cert, force HTTPS, test email delivery</span></div>
+            <div class="t-step"><span class="t-step-num">4</span><span>Build service pages, contact forms, navigation</span></div>
+            <div class="t-step"><span class="t-step-num">5</span><span>Set up automated backups and security monitoring</span></div>
+          </div>
+          <div class="ticket-skills" style="margin-top:14px;">
+            <span class="t-skill">WordPress</span>
+            <span class="t-skill">DNS Configuration</span>
+            <span class="t-skill">SSL Certificates</span>
+            <span class="t-skill">GoDaddy</span>
+            <span class="t-skill">Web Security</span>
+            <span class="t-skill">Uptime Monitoring</span>
+          </div>
+        </div>
+        <div class="ticket-side">
+          <div class="t-status">
+            <div class="t-status-dot resolved">✓</div>
+            <div class="t-status-label">Resolved</div>
+          </div>
+          <a href="https://github.com/sunanda-thompson" class="t-link">View Repo →</a>
+        </div>
+      </div>
+
+      <!-- TICKET 3 -->
+      <div class="ticket fade-up delay-2">
+        <div class="ticket-num">
+          <span style="font-size:0.6rem; opacity:0.6;">TICKET</span>
+          <span class="tnum">#003</span>
+          <span style="font-size:0.55rem; opacity:0.5; margin-top:4px;">CLOSED</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-meta">
+            <span class="t-category">Endpoint Management</span>
+            <span class="t-priority med">Medium Priority</span>
+          </div>
+          <div class="ticket-title">Laptop Imaging & Deployment — University Faculty Refresh</div>
+          <div class="ticket-desc">
+            Led the imaging, configuration, and deployment of new laptops and workstations for faculty and computer labs during a hardware refresh cycle. Imaged machines using a standard OS baseline, installed lab-specific applications, configured shared network drives, mapped printers, and joined machines to the university domain. Created a deployment checklist used by the entire IT team.
+          </div>
+          <div class="ticket-steps">
+            <div class="t-step"><span class="t-step-num">1</span><span>Build master image with baseline OS + core applications</span></div>
+            <div class="t-step"><span class="t-step-num">2</span><span>Image machines using network boot / USB deployment</span></div>
+            <div class="t-step"><span class="t-step-num">3</span><span>Join to university domain, apply Group Policy</span></div>
+            <div class="t-step"><span class="t-step-num">4</span><span>Map shared drives and network printers per department</span></div>
+            <div class="t-step"><span class="t-step-num">5</span><span>Validate, tag asset, log in ServiceNow, hand off to user</span></div>
+          </div>
+          <div class="ticket-skills" style="margin-top:14px;">
+            <span class="t-skill">OS Imaging</span>
+            <span class="t-skill">Active Directory</span>
+            <span class="t-skill">Group Policy</span>
+            <span class="t-skill">Asset Management</span>
+            <span class="t-skill">ServiceNow</span>
+            <span class="t-skill">Hardware Setup</span>
+          </div>
+        </div>
+        <div class="ticket-side">
+          <div class="t-status">
+            <div class="t-status-dot resolved">✓</div>
+            <div class="t-status-label">Resolved</div>
+          </div>
+          <a href="https://github.com/sunanda-thompson" class="t-link">View Repo →</a>
+        </div>
+      </div>
+
+      <!-- TICKET 4 -->
+      <div class="ticket fade-up delay-3">
+        <div class="ticket-num">
+          <span style="font-size:0.6rem; opacity:0.6;">TICKET</span>
+          <span class="tnum">#004</span>
+          <span style="font-size:0.55rem; opacity:0.5; margin-top:4px;">CLOSED</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-meta">
+            <span class="t-category">E-Commerce IT</span>
+            <span class="t-priority med">Medium Priority</span>
+          </div>
+          <div class="ticket-title">Multi-Platform E-Commerce Infrastructure & PCI-DSS Payment Setup</div>
+          <div class="ticket-desc">
+            Configured and maintained IT infrastructure for an e-commerce operation spanning Amazon, eBay, Shopify, and Mercari. Integrated third-party plugins, optimized product listings for platform performance, and set up PCI-DSS compliant payment gateways. Maintained office hardware — desktops, printers, and network devices. Managed all domain and DNS settings through GoDaddy to ensure store accessibility across platforms.
+          </div>
+          <div class="ticket-steps">
+            <div class="t-step"><span class="t-step-num">1</span><span>Audit existing platform integrations and identify gaps</span></div>
+            <div class="t-step"><span class="t-step-num">2</span><span>Configure payment gateways per PCI-DSS requirements</span></div>
+            <div class="t-step"><span class="t-step-num">3</span><span>Install and vet third-party plugins for security compliance</span></div>
+            <div class="t-step"><span class="t-step-num">4</span><span>Manage DNS and domain for store accessibility</span></div>
+            <div class="t-step"><span class="t-step-num">5</span><span>Apply security patches and monitor for vulnerabilities</span></div>
+          </div>
+          <div class="ticket-skills" style="margin-top:14px;">
+            <span class="t-skill">Shopify</span>
+            <span class="t-skill">PCI-DSS</span>
+            <span class="t-skill">Payment Gateways</span>
+            <span class="t-skill">DNS Management</span>
+            <span class="t-skill">Plugin Integration</span>
+            <span class="t-skill">Network Hardware</span>
+          </div>
+        </div>
+        <div class="ticket-side">
+          <div class="t-status">
+            <div class="t-status-dot resolved">✓</div>
+            <div class="t-status-label">Resolved</div>
+          </div>
+          <a href="https://github.com/sunanda-thompson" class="t-link">View Repo →</a>
+        </div>
+      </div>
+
+      <!-- TICKET 5 -->
+      <div class="ticket fade-up delay-4">
+        <div class="ticket-num">
+          <span style="font-size:0.6rem; opacity:0.6;">TICKET</span>
+          <span class="tnum">#005</span>
+          <span style="font-size:0.55rem; opacity:0.5; margin-top:4px;">CLOSED</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-meta">
+            <span class="t-category">User Training</span>
+            <span class="t-priority low">Low Priority</span>
+          </div>
+          <div class="ticket-title">New Print System Rollout — Student Training & Adoption Program</div>
+          <div class="ticket-desc">
+            Led end-user training sessions for a university-wide print system migration. Created training materials, conducted hands-on demos for student groups, and produced a quick-reference guide distributed across campus. Post-rollout support requests for print issues dropped significantly, validating the training program's effectiveness. Served as the primary liaison between students and senior IT staff throughout the transition.
+          </div>
+          <div class="ticket-steps">
+            <div class="t-step"><span class="t-step-num">1</span><span>Learn new print system capabilities and configuration</span></div>
+            <div class="t-step"><span class="t-step-num">2</span><span>Develop training materials and quick-reference cards</span></div>
+            <div class="t-step"><span class="t-step-num">3</span><span>Schedule and deliver group training sessions on campus</span></div>
+            <div class="t-step"><span class="t-step-num">4</span><span>Handle follow-up tickets via Jitbit, escalate as needed</span></div>
+            <div class="t-step"><span class="t-step-num">5</span><span>Document FAQs and update knowledge base</span></div>
+          </div>
+          <div class="ticket-skills" style="margin-top:14px;">
+            <span class="t-skill">End-User Training</span>
+            <span class="t-skill">Jitbit Ticketing</span>
+            <span class="t-skill">Documentation</span>
+            <span class="t-skill">Change Management</span>
+            <span class="t-skill">Stakeholder Comms</span>
+          </div>
+        </div>
+        <div class="ticket-side">
+          <div class="t-status">
+            <div class="t-status-dot resolved">✓</div>
+            <div class="t-status-label">Resolved</div>
+          </div>
+          <a href="https://github.com/sunanda-thompson" class="t-link">View Repo →</a>
+        </div>
+      </div>
+
+      <!-- TICKET 6 -->
+      <div class="ticket fade-up delay-5">
+        <div class="ticket-num">
+          <span style="font-size:0.6rem; opacity:0.6;">TICKET</span>
+          <span class="tnum">#006</span>
+          <span style="font-size:0.55rem; opacity:0.5; margin-top:4px;">CLOSED</span>
+        </div>
+        <div class="ticket-body">
+          <div class="ticket-meta">
+            <span class="t-category">Cybersecurity</span>
+            <span class="t-priority high">High Impact</span>
+          </div>
+          <div class="ticket-title">Antivirus & Software Deployment — 1,300-User Campus Rollout</div>
+          <div class="ticket-desc">
+            Managed Sophos Antivirus and Office 365 deployments across a 1,300-user university environment. Handled software installs, license management, update scheduling, and troubleshooting endpoint protection failures. Also managed network connectivity issues, device imaging, and workstation performance optimization for the student population and faculty.
+          </div>
+          <div class="ticket-steps">
+            <div class="t-step"><span class="t-step-num">1</span><span>Audit existing AV coverage and identify unprotected endpoints</span></div>
+            <div class="t-step"><span class="t-step-num">2</span><span>Deploy Sophos via managed console to all machines</span></div>
+            <div class="t-step"><span class="t-step-num">3</span><span>Configure Office 365 licenses and email profiles</span></div>
+            <div class="t-step"><span class="t-step-num">4</span><span>Troubleshoot network connectivity and VPN issues</span></div>
+            <div class="t-step"><span class="t-step-num">5</span><span>Maintain update schedule and monitor threat dashboard</span></div>
+          </div>
+          <div class="ticket-skills" style="margin-top:14px;">
+            <span class="t-skill">Sophos Antivirus</span>
+            <span class="t-skill">Office 365</span>
+            <span class="t-skill">Endpoint Security</span>
+            <span class="t-skill">Network Troubleshooting</span>
+            <span class="t-skill">VPN</span>
+            <span class="t-skill">User Management</span>
+          </div>
+        </div>
+        <div class="ticket-side">
+          <div class="t-status">
+            <div class="t-status-dot resolved">✓</div>
+            <div class="t-status-label">Resolved</div>
+          </div>
+          <a href="https://github.com/sunanda-thompson" class="t-link">View Repo →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TROUBLESHOOTING PLAYBOOK -->
+<section class="section" id="playbook">
+  <div class="section-inner">
+    <div class="sec-kicker">Knowledge Base</div>
+    <h2 class="sec-heading">Troubleshooting <span>Playbook</span></h2>
+
+    <div class="playbook-grid">
+
+      <div class="playbook-card">
+        <div class="pb-header">
+          <span class="pb-icon">🌐</span>
+          <span class="pb-title">No Network / Internet Connectivity</span>
+          <span class="pb-type">NETWORK</span>
+        </div>
+        <div class="pb-steps">
+          <div class="pb-step"><span class="pb-step-n">1</span><div class="pb-step-text">Check physical connection — <strong>cable seated, port lights active</strong>. Try alternate port/cable.</div></div>
+          <div class="pb-step"><span class="pb-step-n">2</span><div class="pb-step-text">Run <strong>ipconfig /all</strong> — confirm valid IP address (not 169.x APIPA). If APIPA, check DHCP.</div></div>
+          <div class="pb-step"><span class="pb-step-n">3</span><div class="pb-step-text"><strong>Ping 127.0.0.1</strong> (loopback), then gateway, then 8.8.8.8 to isolate layer of failure.</div></div>
+          <div class="pb-step"><span class="pb-step-n">4</span><div class="pb-step-text">Flush DNS: <strong>ipconfig /flushdns</strong>. Reset TCP/IP stack: netsh int ip reset.</div></div>
+          <div class="pb-step"><span class="pb-step-n">5</span><div class="pb-step-text">Check <strong>Windows Firewall / Sophos</strong> — confirm not blocking traffic. Test in safe mode.</div></div>
+          <div class="pb-step"><span class="pb-step-n">6</span><div class="pb-step-text">Escalate to network admin if switch/router level issue confirmed via Wireshark capture.</div></div>
+        </div>
+        <div class="pb-footer">Tools: ipconfig · ping · Wireshark · netsh · Device Manager</div>
+      </div>
+
+      <div class="playbook-card">
+        <div class="pb-header">
+          <span class="pb-icon">🔒</span>
+          <span class="pb-title">Account Locked / Password Reset</span>
+          <span class="pb-type">ACTIVE DIRECTORY</span>
+        </div>
+        <div class="pb-steps">
+          <div class="pb-step"><span class="pb-step-n">1</span><div class="pb-step-text"><strong>Verify user identity</strong> — confirm full name, employee/student ID, last 4 digits of SSN or manager confirmation.</div></div>
+          <div class="pb-step"><span class="pb-step-n">2</span><div class="pb-step-text">Check <strong>Active Directory Users & Computers</strong> — confirm account is locked, not disabled or expired.</div></div>
+          <div class="pb-step"><span class="pb-step-n">3</span><div class="pb-step-text">Review <strong>Event Viewer / Security logs</strong> — identify lockout source (workstation, mapped drive, mobile device).</div></div>
+          <div class="pb-step"><span class="pb-step-n">4</span><div class="pb-step-text">Unlock account, reset password to <strong>compliant temp password</strong>, force change on next login.</div></div>
+          <div class="pb-step"><span class="pb-step-n">5</span><div class="pb-step-text">Advise user to <strong>update saved credentials</strong> on all devices to prevent re-lock.</div></div>
+        </div>
+        <div class="pb-footer">Tools: Active Directory · Event Viewer · PowerShell · Group Policy</div>
+      </div>
+
+      <div class="playbook-card">
+        <div class="pb-header">
+          <span class="pb-icon">🖨️</span>
+          <span class="pb-title">Printer Not Printing / Offline</span>
+          <span class="pb-type">HARDWARE</span>
+        </div>
+        <div class="pb-steps">
+          <div class="pb-step"><span class="pb-step-n">1</span><div class="pb-step-text">Check <strong>physical status</strong> — power on, paper loaded, no paper jam, ink/toner level OK.</div></div>
+          <div class="pb-step"><span class="pb-step-n">2</span><div class="pb-step-text">Set printer <strong>online in Windows</strong>: Devices & Printers → right-click → "See what's printing" → Printer menu → uncheck Use Printer Offline.</div></div>
+          <div class="pb-step"><span class="pb-step-n">3</span><div class="pb-step-text">Clear <strong>print queue</strong> — stop Print Spooler service, delete files in C:\Windows\System32\spool\PRINTERS, restart.</div></div>
+          <div class="pb-step"><span class="pb-step-n">4</span><div class="pb-step-text">Confirm <strong>correct driver installed</strong>. Remove and re-add printer using current manufacturer driver.</div></div>
+          <div class="pb-step"><span class="pb-step-n">5</span><div class="pb-step-text">For <strong>network printers</strong> — ping printer IP, confirm correct port in printer properties.</div></div>
+        </div>
+        <div class="pb-footer">Tools: Print Spooler · Device Manager · Ping · Manufacturer Portal</div>
+      </div>
+
+      <div class="playbook-card">
+        <div class="pb-header">
+          <span class="pb-icon">🐌</span>
+          <span class="pb-title">Slow Computer Performance</span>
+          <span class="pb-type">ENDPOINT</span>
+        </div>
+        <div class="pb-steps">
+          <div class="pb-step"><span class="pb-step-n">1</span><div class="pb-step-text">Open <strong>Task Manager</strong> — identify high CPU, RAM, or disk usage. Kill non-essential processes.</div></div>
+          <div class="pb-step"><span class="pb-step-n">2</span><div class="pb-step-text">Check <strong>startup programs</strong> (Task Manager → Startup tab) — disable unnecessary entries.</div></div>
+          <div class="pb-step"><span class="pb-step-n">3</span><div class="pb-step-text">Run <strong>full Sophos/AV scan</strong> — malware is a common cause of CPU spikes and slowness.</div></div>
+          <div class="pb-step"><span class="pb-step-n">4</span><div class="pb-step-text">Check <strong>disk health</strong> with chkdsk and verify free space (&gt;15% recommended). Run disk cleanup.</div></div>
+          <div class="pb-step"><span class="pb-step-n">5</span><div class="pb-step-text">Confirm all <strong>Windows Updates</strong> applied. If SSD — check for firmware update. Consider RAM upgrade if &lt;8GB.</div></div>
+        </div>
+        <div class="pb-footer">Tools: Task Manager · chkdsk · Sophos · Windows Update · Disk Cleanup</div>
+      </div>
+
+      <div class="playbook-card">
+        <div class="pb-header">
+          <span class="pb-icon">📧</span>
+          <span class="pb-title">Email / Outlook Not Syncing</span>
+          <span class="pb-type">OFFICE 365</span>
+        </div>
+        <div class="pb-steps">
+          <div class="pb-step"><span class="pb-step-n">1</span><div class="pb-step-text">Confirm <strong>internet connectivity</strong> — test via browser. Check Office 365 service health at admin.microsoft.com.</div></div>
+          <div class="pb-step"><span class="pb-step-n">2</span><div class="pb-step-text">In Outlook: File → <strong>Account Settings</strong> — verify email address and server settings are correct.</div></div>
+          <div class="pb-step"><span class="pb-step-n">3</span><div class="pb-step-text">Run <strong>Microsoft Support and Recovery Assistant (SaRA)</strong> for automated Outlook diagnostics.</div></div>
+          <div class="pb-step"><span class="pb-step-n">4</span><div class="pb-step-text">Rebuild <strong>Outlook profile</strong> — Control Panel → Mail → Show Profiles → Add new profile and reconfigure.</div></div>
+          <div class="pb-step"><span class="pb-step-n">5</span><div class="pb-step-text">If persists — check mailbox size quota in <strong>Exchange/O365 Admin Center</strong>. Reduce mailbox if at limit.</div></div>
+        </div>
+        <div class="pb-footer">Tools: Microsoft SaRA · Exchange Admin · Outlook · Office 365 Portal</div>
+      </div>
+
+      <div class="playbook-card">
+        <div class="pb-header">
+          <span class="pb-icon">🔐</span>
+          <span class="pb-title">VPN Connection Failing</span>
+          <span class="pb-type">NETWORK / REMOTE</span>
+        </div>
+        <div class="pb-steps">
+          <div class="pb-step"><span class="pb-step-n">1</span><div class="pb-step-text">Confirm <strong>internet connection is active</strong> without VPN — VPN cannot connect if base connectivity is down.</div></div>
+          <div class="pb-step"><span class="pb-step-n">2</span><div class="pb-step-text">Verify <strong>credentials are correct</strong> — check for expired password, MFA prompt, or certificate issue.</div></div>
+          <div class="pb-step"><span class="pb-step-n">3</span><div class="pb-step-text">Check <strong>firewall rules</strong> — confirm UDP 500/4500 (IPSec) or TCP 443 (SSL VPN) not blocked.</div></div>
+          <div class="pb-step"><span class="pb-step-n">4</span><div class="pb-step-text">Reinstall <strong>Cisco AnyConnect or OpenVPN</strong> client — corrupted client installs are common.</div></div>
+          <div class="pb-step"><span class="pb-step-n">5</span><div class="pb-step-text">Test from <strong>alternate network</strong> (mobile hotspot) — identifies if ISP or local router is blocking VPN.</div></div>
+        </div>
+        <div class="pb-footer">Tools: Cisco AnyConnect · OpenVPN · Windows Firewall · Nmap</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="sec-kicker">Technical Proficiency</div>
+    <h2 class="sec-heading">Skills & <span>Expertise</span></h2>
+
+    <div class="skills-bento">
+
+      <div class="skill-box">
+        <span class="sb-icon">💻</span>
+        <div class="sb-title">Operating Systems</div>
+        <div class="sb-desc">Comfortable building, configuring, and troubleshooting across all major OS environments for both end-user and server workloads.</div>
+        <div class="sb-tags">
+          <span class="sb-tag orange">Windows 10/11</span>
+          <span class="sb-tag orange">Windows Server 2022</span>
+          <span class="sb-tag">macOS</span>
+          <span class="sb-tag green">Ubuntu Linux</span>
+          <span class="sb-tag green">Kali Linux</span>
+        </div>
+      </div>
+
+      <div class="skill-box">
+        <span class="sb-icon">🏢</span>
+        <div class="sb-title">Active Directory & Identity</div>
+        <div class="sb-desc">Managing users, groups, OUs, and GPOs in domain environments. Account lifecycle management and access provisioning.</div>
+        <div class="sb-tags">
+          <span class="sb-tag orange">Active Directory</span>
+          <span class="sb-tag orange">Group Policy</span>
+          <span class="sb-tag blue">RBAC</span>
+          <span class="sb-tag">OU Management</span>
+          <span class="sb-tag">ServiceNow</span>
+        </div>
+      </div>
+
+      <div class="skill-box">
+        <span class="sb-icon">⚙️</span>
+        <div class="sb-title">Scripting & Automation</div>
+        <div class="sb-desc">Writing scripts to automate repetitive IT tasks — from mass deployments to scheduled maintenance routines.</div>
+        <div class="prof-bar" style="margin-top:14px;">
+          <div class="prof-label"><span>PowerShell</span><span>Advanced</span></div>
+          <div class="prof-track"><div class="prof-fill" style="--w:80%; width:80%;"></div></div>
+        </div>
+        <div class="prof-bar">
+          <div class="prof-label"><span>Batch Scripting</span><span>Advanced</span></div>
+          <div class="prof-track"><div class="prof-fill" style="--w:85%; width:85%;"></div></div>
+        </div>
+        <div class="prof-bar">
+          <div class="prof-label"><span>Bash</span><span>Proficient</span></div>
+          <div class="prof-track"><div class="prof-fill" style="--w:72%; width:72%;"></div></div>
+        </div>
+        <div class="prof-bar">
+          <div class="prof-label"><span>Python</span><span>Proficient</span></div>
+          <div class="prof-track"><div class="prof-fill" style="--w:68%; width:68%;"></div></div>
+        </div>
+      </div>
+
+      <div class="skill-box">
+        <span class="sb-icon">🌐</span>
+        <div class="sb-title">Networking & Connectivity</div>
+        <div class="sb-desc">Diagnosing and resolving network issues from layer 1 to layer 7. VPN configuration and monitoring.</div>
+        <div class="sb-tags">
+          <span class="sb-tag blue">TCP/IP</span>
+          <span class="sb-tag blue">DNS / DHCP</span>
+          <span class="sb-tag blue">Cisco AnyConnect</span>
+          <span class="sb-tag blue">OpenVPN</span>
+          <span class="sb-tag">Wireshark</span>
+          <span class="sb-tag">Nmap</span>
+        </div>
+      </div>
+
+      <div class="skill-box">
+        <span class="sb-icon">🛡️</span>
+        <div class="sb-title">Security & Compliance</div>
+        <div class="sb-desc">Applying security best practices in day-to-day IT support — AV management, patch compliance, and policy enforcement.</div>
+        <div class="sb-tags">
+          <span class="sb-tag orange">Sophos Antivirus</span>
+          <span class="sb-tag orange">Windows Firewall</span>
+          <span class="sb-tag">PCI-DSS</span>
+          <span class="sb-tag">NIST</span>
+          <span class="sb-tag green">SSL / HTTPS</span>
+          <span class="sb-tag">Patch Management</span>
+        </div>
+      </div>
+
+      <div class="skill-box">
+        <span class="sb-icon">📋</span>
+        <div class="sb-title">Ticketing & ITSM</div>
+        <div class="sb-desc">Logging, tracking, and resolving support requests. Writing clear documentation and knowledge base articles.</div>
+        <div class="sb-tags">
+          <span class="sb-tag orange">ServiceNow</span>
+          <span class="sb-tag orange">Jitbit</span>
+          <span class="sb-tag">Knowledge Base</span>
+          <span class="sb-tag">Escalation Paths</span>
+          <span class="sb-tag">SLA Management</span>
+        </div>
+      </div>
+
+      <div class="skill-box wide">
+        <span class="sb-icon">🖥️</span>
+        <div class="sb-title">Hardware Support</div>
+        <div class="sb-desc">Physical and hardware support across Dell, Apple, and generic workstations. Imaging, peripheral configuration, and hardware repair/replacement.</div>
+        <div class="sb-tags">
+          <span class="sb-tag">Dell Workstations</span>
+          <span class="sb-tag">Apple Hardware</span>
+          <span class="sb-tag">OS Imaging</span>
+          <span class="sb-tag">Peripheral Setup</span>
+          <span class="sb-tag">Switch / Router Config</span>
+          <span class="sb-tag">Printer Maintenance</span>
+          <span class="sb-tag">Hardware Repair</span>
+          <span class="sb-tag">Asset Tagging</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="section" id="tools">
+  <div class="section-inner">
+    <div class="sec-kicker">Tech Stack</div>
+    <h2 class="sec-heading">Tools I <span>Work With</span></h2>
+    <div class="tools-grid">
+      <div class="tool-card"><div class="tool-icon">🪟</div><div class="tool-name">Windows 10/11</div><div class="tool-cat">OS · Endpoint</div></div>
+      <div class="tool-card"><div class="tool-icon">🖥️</div><div class="tool-name">Windows Server</div><div class="tool-cat">OS · Server</div></div>
+      <div class="tool-card"><div class="tool-icon">🐧</div><div class="tool-name">Ubuntu / Kali</div><div class="tool-cat">OS · Linux</div></div>
+      <div class="tool-card"><div class="tool-icon">🏢</div><div class="tool-name">Active Directory</div><div class="tool-cat">Identity · Directory</div></div>
+      <div class="tool-card"><div class="tool-icon">📋</div><div class="tool-name">ServiceNow</div><div class="tool-cat">ITSM · Ticketing</div></div>
+      <div class="tool-card"><div class="tool-icon">🎫</div><div class="tool-name">Jitbit</div><div class="tool-cat">Help Desk · Tickets</div></div>
+      <div class="tool-card"><div class="tool-icon">🔵</div><div class="tool-name">Office 365</div><div class="tool-cat">Productivity · Email</div></div>
+      <div class="tool-card"><div class="tool-icon">🛡️</div><div class="tool-name">Sophos</div><div class="tool-cat">Antivirus · Security</div></div>
+      <div class="tool-card"><div class="tool-icon">🔍</div><div class="tool-name">Wireshark</div><div class="tool-cat">Network · Analysis</div></div>
+      <div class="tool-card"><div class="tool-icon">🗺️</div><div class="tool-name">Nmap</div><div class="tool-cat">Network · Scanning</div></div>
+      <div class="tool-card"><div class="tool-icon">🔐</div><div class="tool-name">Cisco AnyConnect</div><div class="tool-cat">VPN · Remote Access</div></div>
+      <div class="tool-card"><div class="tool-icon">🌐</div><div class="tool-name">WordPress</div><div class="tool-cat">CMS · Web</div></div>
+      <div class="tool-card"><div class="tool-icon">🛒</div><div class="tool-name">Shopify</div><div class="tool-cat">E-Commerce · Platform</div></div>
+      <div class="tool-card"><div class="tool-icon">🌍</div><div class="tool-name">GoDaddy</div><div class="tool-cat">DNS · Hosting</div></div>
+      <div class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">PowerShell</div><div class="tool-cat">Scripting · Automation</div></div>
+      <div class="tool-card"><div class="tool-icon">🐙</div><div class="tool-name">GitHub</div><div class="tool-cat">Version Control · Docs</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTATION -->
+<section class="section" id="docs" style="background:var(--bg);">
+  <div class="section-inner">
+    <div class="sec-kicker">Written Work</div>
+    <h2 class="sec-heading">Documentation & <span>Guides</span></h2>
+
+    <div class="docs-grid">
+
+      <div class="doc-card">
+        <div class="doc-type">SOP · Standard Operating Procedure</div>
+        <div class="doc-title">New Employee Laptop Setup & Onboarding Checklist</div>
+        <div class="doc-desc">Step-by-step SOP for configuring a new Windows workstation from imaging through domain join, software installation, account setup, and user handoff. Covers both in-person and remote onboarding scenarios.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Windows</span>
+          <span class="doc-tag">Active Directory</span>
+          <span class="doc-tag">Onboarding</span>
+          <span class="doc-tag">Checklist</span>
+        </div>
+        <a href="https://github.com/sunanda-thompson" class="doc-link">→ View on GitHub</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-type">Reference Guide</div>
+        <div class="doc-title">PowerShell AD Automation — Command Reference</div>
+        <div class="doc-desc">A reference guide covering the most-used PowerShell cmdlets for Active Directory administration: creating users, adding to groups, disabling accounts, resetting passwords, exporting reports, and bulk operations from CSV.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">PowerShell</span>
+          <span class="doc-tag">Active Directory</span>
+          <span class="doc-tag">Reference</span>
+        </div>
+        <a href="https://github.com/sunanda-thompson" class="doc-link">→ View on GitHub</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-type">Knowledge Base Article</div>
+        <div class="doc-title">Common Help Desk Issues — Resolution Playbook</div>
+        <div class="doc-desc">A structured knowledge base covering the 20 most frequent help desk tickets — network issues, printing, account lockouts, Office 365, and VPN problems — each with step-by-step resolution procedures and escalation criteria.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Help Desk</span>
+          <span class="doc-tag">Troubleshooting</span>
+          <span class="doc-tag">KB Article</span>
+        </div>
+        <a href="https://github.com/sunanda-thompson" class="doc-link">→ View on GitHub</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-type">Technical Guide</div>
+        <div class="doc-title">WordPress Security Hardening Checklist for Small Business</div>
+        <div class="doc-desc">A practical hardening guide for small business WordPress sites — covering plugin vetting, SSL setup, login protection, update management, backup automation, and monitoring. Based on real deployment experience.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">WordPress</span>
+          <span class="doc-tag">Security</span>
+          <span class="doc-tag">SSL</span>
+          <span class="doc-tag">Small Business</span>
+        </div>
+        <a href="https://github.com/sunanda-thompson" class="doc-link">→ View on GitHub</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-type">User Guide</div>
+        <div class="doc-title">End-User VPN Setup Guide — Cisco AnyConnect & OpenVPN</div>
+        <div class="doc-desc">A clear, non-technical guide for end users setting up remote access VPN on Windows and macOS. Covers installation, credential entry, MFA, common error messages, and self-service troubleshooting steps before calling IT.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">VPN</span>
+          <span class="doc-tag">Cisco AnyConnect</span>
+          <span class="doc-tag">End-User</span>
+          <span class="doc-tag">Remote Work</span>
+        </div>
+        <a href="https://github.com/sunanda-thompson" class="doc-link">→ View on GitHub</a>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-type">Process Document</div>
+        <div class="doc-title">Sophos AV Deployment & Management Runbook</div>
+        <div class="doc-desc">A runbook for deploying and managing Sophos Antivirus across a multi-workstation environment — initial rollout, policy configuration, update scheduling, threat response procedures, and license management.</div>
+        <div class="doc-tags">
+          <span class="doc-tag">Sophos</span>
+          <span class="doc-tag">Antivirus</span>
+          <span class="doc-tag">Endpoint Security</span>
+          <span class="doc-tag">Runbook</span>
+        </div>
+        <a href="https://github.com/sunanda-thompson" class="doc-link">→ View on GitHub</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="sec-kicker">Credentials</div>
+    <h2 class="sec-heading">Certifications & <span>Education</span></h2>
+
+    <div class="certs-row" style="margin-bottom:32px;">
+      <div class="cert-strip">
+        <div class="cert-mark">🛡️</div>
+        <div class="cert-info">
+          <div class="cert-name">Certified in Cybersecurity (CC)</div>
+          <div class="cert-issuer">ISC²</div>
+          <div class="cert-year">2025 · Verified</div>
+        </div>
+      </div>
+      <div class="cert-strip">
+        <div class="cert-mark">🔴</div>
+        <div class="cert-info">
+          <div class="cert-name">Oracle SQL & PL/SQL Developer</div>
+          <div class="cert-issuer">Arizona Western College</div>
+          <div class="cert-year">2023 · Verified</div>
+        </div>
+      </div>
+      <div class="cert-strip">
+        <div class="cert-mark">📊</div>
+        <div class="cert-info">
+          <div class="cert-name">Data Analysis Professional Certificate</div>
+          <div class="cert-issuer">EdX</div>
+          <div class="cert-year">2025 · Verified</div>
+        </div>
+      </div>
+      <div class="cert-strip">
+        <div class="cert-mark">📈</div>
+        <div class="cert-info">
+          <div class="cert-name">Data Analytics Bootcamp</div>
+          <div class="cert-issuer">Alex the Analyst</div>
+          <div class="cert-year">2025 · Verified</div>
+        </div>
+      </div>
+      <div class="cert-strip">
+        <div class="cert-mark">⚡</div>
+        <div class="cert-info">
+          <div class="cert-name">Applied Scrum for Agile PM</div>
+          <div class="cert-issuer">EdX</div>
+          <div class="cert-year">2025 · Verified</div>
+        </div>
+      </div>
+      <div class="cert-strip" style="border-style:dashed; opacity:0.6;">
+        <div class="cert-mark" style="background:var(--border2); color:white;">🎯</div>
+        <div class="cert-info">
+          <div class="cert-name">CompTIA A+ *(Target)*</div>
+          <div class="cert-issuer">CompTIA</div>
+          <div class="cert-year">Planned — 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+      <div style="background:var(--surface2); border:2px solid var(--ink); padding:28px;">
+        <div style="font-family:var(--mono); font-size:0.65rem; color:var(--orange); letter-spacing:0.14em; margin-bottom:10px; font-weight:500;">GRADUATE DEGREE</div>
+        <div style="font-family:var(--sans); font-size:1.1rem; font-weight:800; color:var(--ink); margin-bottom:4px; letter-spacing:-0.02em;">M.S. Information Security & Digital Forensics</div>
+        <div style="font-size:0.82rem; color:var(--ink-mid); margin-bottom:8px;">Niagara University · 2019–2021</div>
+        <div style="font-size:0.78rem; color:var(--ink-dim); font-style:italic; font-family:var(--mono);">Thesis: Ransomware — Analysis, Impact, and Recommendations</div>
+      </div>
+      <div style="background:var(--surface2); border:2px solid var(--ink); padding:28px;">
+        <div style="font-family:var(--mono); font-size:0.65rem; color:var(--orange); letter-spacing:0.14em; margin-bottom:10px; font-weight:500;">UNDERGRADUATE DEGREE</div>
+        <div style="font-family:var(--sans); font-size:1.1rem; font-weight:800; color:var(--ink); margin-bottom:4px; letter-spacing:-0.02em;">B.S. Computer Science</div>
+        <div style="font-size:0.82rem; color:var(--ink-mid); margin-bottom:8px;">Huntington University · 2015–2019</div>
+        <div style="font-size:0.78rem; color:var(--ink-dim); font-family:var(--mono);">Minors: Criminal Justice & Cybersecurity</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Sunanda <span>Thompson</span></div>
+      <div class="footer-tagline">IT Support · Technical Support · Help Desk · Texas · Open to Remote</div>
+      <div class="footer-contact">
+        <a href="https://mail.google.com/mail/?view=cm&to=sunanda.thompson@gmail.com" target="_blank" class="fc-item">
+          <span class="fc-icon">✉</span> sunanda.thompson@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/sunanda-thompson-5242aa177" target="_blank" class="fc-item">
+          <span class="fc-icon">in</span> linkedin.com/in/sunanda-thompson
+        </a>
+        <a href="https://github.com/sunanda-thompson" target="_blank" class="fc-item">
+          <span class="fc-icon">⌥</span> github.com/sunanda-thompson
+        </a>
+      </div>
+    </div>
+    <div class="footer-right">
+      <a href="https://mail.google.com/mail/?view=cm&to=sunanda.thompson@gmail.com" target="_blank" class="footer-open">Hire Me →</a>
+      <div class="footer-roles">
+        <span class="footer-role">IT Support Specialist</span>
+        <span class="footer-role">Technical Support Analyst</span>
+        <span class="footer-role">Help Desk Technician L1/L2</span>
+        <span class="footer-role">Systems Administrator (Jr.)</span>
+        <span class="footer-role">Desktop Support Engineer</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sunanda Thompson · IT Support Portfolio</span>
+    <span>Make every day count.</span>
+  </div>
+</footer>
+
+</body>
+</html>
